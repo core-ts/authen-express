@@ -1,0 +1,27 @@
+{
+  "name": "authen-express",
+  "version": "0.0.1",
+  "description": "authen-express",
+  "main": "./lib/index.js",
+  "types": "./src/index.ts",
+  "scripts": {
+    "build:lib": "tsc",
+    "clean:lib": "rimraf lib"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "express": "^4.17.1",
+    "tslint": "5.10.0",
+    "typescript": "^3.3.3333"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/core-ts/authen-express"
+  },
+  "keywords": [
+    "authen-express"
+  ]
+}
