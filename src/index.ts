@@ -54,8 +54,14 @@ export class AuthenticationController<T extends User> {
   }
   authenticate(req: Request, res: Response) {
     const user: T = req.body;
-    if (!user.username || user.username.length === 0 || !user.password || user.password.length === 0) {
-      res.status(401).end('username and password cannot be empty');
+    if (!user.username || user.username.length === 0) {
+      return res.status(401).end('username cannot be empty');
+    }
+    if (!user.password || user.password.length === 0) {
+      return res.status(401).end('password cannot be empty');
+    }
+    if (user.step && user.step > 1 && (!user.passcode || user.passcode.length === 0)) {
+      return res.status(401).end('passcode cannot be empty');
     }
     if (this.decrypt) {
       const p = this.decrypt(user.password);

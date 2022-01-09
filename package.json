@@ -1,6 +1,6 @@
 {
   "name": "authen-express",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "authen-express",
   "main": "./lib/index.js",
   "types": "./src/index.ts",
