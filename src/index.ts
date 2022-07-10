@@ -21,15 +21,15 @@ export interface Privilege {
   children?: Privilege[];
   permissions?: number;
 }
-export interface AuthResult {
+export interface AuthResult<ID> {
   status: number | string;
-  user?: UserAccount;
+  user?: UserAccount<ID>;
   message?: string;
 }
-export type Result = AuthResult;
-export type LoginResult = AuthResult;
-export interface UserAccount {
-  id?: string;
+export type Result<ID> = AuthResult<ID>;
+export type LoginResult<ID> = AuthResult<ID>;
+export interface UserAccount<ID> {
+  id?: ID;
   username?: string;
   contact?: string;
   email?: string;
@@ -48,8 +48,8 @@ export interface UserAccount {
   gender?: string;
   imageURL?: string;
 }
-export class AuthenticationController<T extends User> {
-  constructor (public log: Log, public login: (user: T) => Promise<AuthResult>, public cookie?: boolean, public decrypt?: (cipherText: string) => string|undefined) {
+export class AuthenticationController<T extends User, ID> {
+  constructor (public log: Log, public login: (user: T) => Promise<AuthResult<ID>>, public cookie?: boolean, public decrypt?: (cipherText: string) => string|undefined) {
     this.authenticate = this.authenticate.bind(this);
   }
   authenticate(req: Request, res: Response) {
