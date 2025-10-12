@@ -49,7 +49,7 @@ export interface UserAccount<ID> {
   imageURL?: string;
 }
 export class AuthenticationController<T extends User, ID> {
-  constructor (public log: Log, public login: (user: T) => Promise<AuthResult<ID>>, public cookie?: boolean, public decrypt?: (cipherText: string) => string|undefined) {
+  constructor (protected log: Log, protected login: (user: T) => Promise<AuthResult<ID>>, protected cookie?: boolean, protected decrypt?: (cipherText: string) => string|undefined) {
     this.authenticate = this.authenticate.bind(this);
   }
   authenticate(req: Request, res: Response) {
@@ -92,7 +92,7 @@ export class AuthenticationController<T extends User, ID> {
 export const AuthenticationHandler = AuthenticationController;
 // tslint:disable-next-line:max-classes-per-file
 export class PrivilegeController {
-  constructor(private log: Log, public privileges: () => Promise<Privilege[]>) {
+  constructor(private log: Log, private privileges: () => Promise<Privilege[]>) {
     this.all = this.all.bind(this);
   }
   all(req: Request, res: Response) {
