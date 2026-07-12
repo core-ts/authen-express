@@ -1,6 +1,6 @@
 {
   "name": "authen-express",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "authen-express",
   "main": "./lib/index.js",
   "types": "./src/index.ts",
@@ -10,7 +10,9 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
+    "@types/jsonwebtoken": "^9.0.10",
     "express": "^4.17.1",
+    "jsonwebtoken": "^9.0.3",
     "tslint": "5.10.0",
     "typescript": "^3.3.3333"
   },
